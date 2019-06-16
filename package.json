@@ -1,6 +1,6 @@
 {
   "name": "webux-response",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Module to centralize custom response format",
   "main": "index.js",
   "scripts": {
