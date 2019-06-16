@@ -17,8 +17,8 @@
 function success(body, msg, devMsg) {
   this.status(200);
   this.json({
-    message: msg,
-    devMessage: devMsg,
+    message: msg || "",
+    devMessage: devMsg || "",
     success: true,
     code: 200,
     body
@@ -28,8 +28,8 @@ function success(body, msg, devMsg) {
 function created(body, msg, devMsg) {
   this.status(201);
   this.json({
-    message: msg,
-    devMessage: devMsg,
+    message: msg || "",
+    devMessage: devMsg || "",
     success: true,
     code: 201,
     body
@@ -39,8 +39,8 @@ function created(body, msg, devMsg) {
 function updated(body, msg, devMsg) {
   this.status(200);
   this.json({
-    message: msg,
-    devMessage: devMsg,
+    message: msg || "",
+    devMessage: devMsg || "",
     success: true,
     code: 200,
     body
@@ -50,8 +50,8 @@ function updated(body, msg, devMsg) {
 function deleted(id, msg, devMsg) {
   this.status(204);
   this.json({
-    message: msg,
-    devMessage: devMsg,
+    message: msg || "",
+    devMessage: devMsg || "",
     success: true,
     code: 204,
     id: id
