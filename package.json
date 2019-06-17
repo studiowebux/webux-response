@@ -1,10 +1,9 @@
 {
   "name": "webux-response",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Module to centralize custom response format",
   "main": "index.js",
   "author": "Studio Webux S.E.N.C",
   "license": "SEE LICENSE IN license.txt",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
