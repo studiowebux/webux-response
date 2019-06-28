@@ -4,7 +4,14 @@
   "description": "Module to centralize custom response format",
   "main": "index.js",
   "author": "Studio Webux S.E.N.C",
+  "homepage": "https://github.com/studiowebux/webux-response",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/studiowebux/webux-response.git"
+  },
   "license": "SEE LICENSE IN license.txt",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^4.17.1"
   }
 }
