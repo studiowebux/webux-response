@@ -12,7 +12,7 @@ app.get("/error", (req, res) => {
 });
 
 app.get("/custom", (req, res) => {
-  return res.custom(244, { msg: "this is a 244 code !", bla: "bla bla vbla" });
+  return res.custom(244, { msg: "this is a 244 code !", text: "bla bla bla" });
 });
 
 app.listen(1337);

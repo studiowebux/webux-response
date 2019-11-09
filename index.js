@@ -14,6 +14,13 @@
 
 "use strict";
 
+/**
+ * return success (200)
+ * @param {Object} body The body to return to the user, Mandatory
+ * @param {String} msg The message for the user, optional
+ * @param {String} devMsg The development message for the developer, optional
+ * @return {Object} The response object
+ */
 function success(body, msg, devMsg) {
   this.status(200);
   this.json({
@@ -25,6 +32,13 @@ function success(body, msg, devMsg) {
   });
 }
 
+/**
+ * return created (201)
+ * @param {Object} body The body to return to the user, Mandatory
+ * @param {String} msg The message for the user, optional
+ * @param {String} devMsg The development message for the developer, optional
+ * @return {Object} The response object
+ */
 function created(body, msg, devMsg) {
   this.status(201);
   this.json({
@@ -36,6 +50,13 @@ function created(body, msg, devMsg) {
   });
 }
 
+/**
+ * return updated (200)
+ * @param {Object} body The body to return to the user, Mandatory
+ * @param {String} msg The message for the user, optional
+ * @param {String} devMsg The development message for the developer, optional
+ * @return {Object} The response object
+ */
 function updated(body, msg, devMsg) {
   this.status(200);
   this.json({
@@ -47,6 +68,13 @@ function updated(body, msg, devMsg) {
   });
 }
 
+/**
+ * return deleted (204)
+ * @param {String} id The id of the deleted resource to return to the user, Mandatory
+ * @param {String} msg The message for the user, optional
+ * @param {String} devMsg The development message for the developer, optional
+ * @return {Object} The response object
+ */
 function deleted(id, msg, devMsg) {
   this.status(204);
   this.json({
@@ -58,6 +86,12 @@ function deleted(id, msg, devMsg) {
   });
 }
 
+/**
+ * return forbidden (403)
+ * @param {String} devMsg The development message for the developer, optional
+ * @param {String} msg The message for the user, optional
+ * @return {Object} The response object
+ */
 function forbidden(devMsg, msg) {
   this.status(403);
   this.json({
@@ -68,6 +102,12 @@ function forbidden(devMsg, msg) {
   });
 }
 
+/**
+ * return bad request (400)
+ * @param {String} devMsg The development message for the developer, optional
+ * @param {String} msg The message for the user, optional
+ * @return {Object} The response object
+ */
 function badRequest(devMsg, msg) {
   this.status(400);
   this.json({
@@ -79,6 +119,12 @@ function badRequest(devMsg, msg) {
   });
 }
 
+/**
+ * return server error (500)
+ * @param {String} devMsg The development message for the developer, optional
+ * @param {String} msg The message for the user, optional
+ * @return {Object} The response object
+ */
 function serverError(devMsg, msg) {
   this.status(500);
   this.json({
@@ -89,6 +135,12 @@ function serverError(devMsg, msg) {
   });
 }
 
+/**
+ * return not found (404)
+ * @param {String} devMsg The development message for the developer, optional
+ * @param {String} msg The message for the user, optional
+ * @return {Object} The response object
+ */
 function notFound(devMsg, msg) {
   this.status(404);
   this.json({
@@ -99,11 +151,23 @@ function notFound(devMsg, msg) {
   });
 }
 
+/**
+ * return custom (xxx)
+ * @param {Number} code The code of the HTTP status, Mandatory
+ * @param {Object} object it contains the response, Mandatory
+ * @return {Object} The response object
+ */
 function custom(code, object) {
   this.status(code);
   this.json(object);
 }
 
+/**
+ * return unprocessable (422)
+ * @param {String} devMsg The development message for the developer, optional
+ * @param {String} msg The message for the user, optional
+ * @return {Object} The response object
+ */
 function unprocessable(devMsg, msg) {
   this.status(422);
   this.json({
@@ -114,7 +178,13 @@ function unprocessable(devMsg, msg) {
   });
 }
 
-function unauthorized() {
+/**
+ * return unauthorized (401)
+ * @param {String} devMsg The development message for the developer, optional
+ * @param {String} msg The message for the user, optional
+ * @return {Object} The response object
+ */
+function unauthorized(devMsg, msg) {
   this.status(401);
   this.json({
     message:
@@ -128,6 +198,11 @@ function unauthorized() {
   });
 }
 
+/**
+ * map the custom responses with express
+ * @param {Function} express The express variable, Mandatory
+ * @return {VoidFunction} return nothing.
+ */
 function hook(express) {
   express.response["success"] = success;
   express.response["created"] = created;
