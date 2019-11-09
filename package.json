@@ -1,5 +1,5 @@
 {
-  "name": "webux-response",
+  "name": "@studiowebux/response",
   "version": "1.0.3",
   "description": "Module to centralize custom response format",
   "main": "index.js",
