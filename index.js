@@ -14,6 +14,20 @@
 
 "use strict";
 
+const MSG_FORBIDDEN = "You are not authorized to access this resource.";
+const DEVMSG_FORBIDDEN = "An authentication is required.";
+const MSG_BADREQUEST =
+  "The request is malformed, please refer to the documentation.";
+const MSG_SERVERERROR = "An internal error occured, please try again later.";
+const MSG_NOTFOUND = "The resource is not available.";
+const DEVMSG_NOTFOUND = "Resource not found";
+const MSG_UNPROCESSABLE = "The resource is not compliant with the API.";
+const DEVMSG_UNPROCESSABLE = "Resource unprocessable";
+const MSG_UNAUTHORIZED =
+  "You are not authorized to access this resource, please contact an administrator to get the proper rights.";
+const DEVMSG_UNAUTHORIZED =
+  "the user is logged in but he doesn't have the permission to do an action";
+
 /**
  * return success (200)
  * @param {Object} body The body to return to the user, Mandatory
@@ -88,15 +102,15 @@ function deleted(id, msg, devMsg) {
 
 /**
  * return forbidden (403)
- * @param {String} devMsg The development message for the developer, optional
  * @param {String} msg The message for the user, optional
+ * @param {String} devMsg The development message for the developer, optional
  * @return {Object} The response object
  */
-function forbidden(devMsg, msg) {
+function forbidden(msg, devMsg) {
   this.status(403);
   this.json({
-    message: msg || "You are not authorize to access this resource.",
-    devMessage: devMsg || "An authentication is required",
+    message: msg || MSG_FORBIDDEN,
+    devMessage: devMsg || DEVMSG_FORBIDDEN,
     success: false,
     code: 403
   });
@@ -104,15 +118,14 @@ function forbidden(devMsg, msg) {
 
 /**
  * return bad request (400)
- * @param {String} devMsg The development message for the developer, optional
  * @param {String} msg The message for the user, optional
+ * @param {String} devMsg The development message for the developer, optional
  * @return {Object} The response object
  */
-function badRequest(devMsg, msg) {
+function badRequest(msg, devMsg) {
   this.status(400);
   this.json({
-    message:
-      msg || "The request is malformed, please refer to the documentation.",
+    message: msg || MSG_BADREQUEST,
     devMessage: devMsg || "",
     success: false,
     code: 400
@@ -121,15 +134,15 @@ function badRequest(devMsg, msg) {
 
 /**
  * return server error (500)
- * @param {String} devMsg The development message for the developer, optional
  * @param {String} msg The message for the user, optional
+ * @param {String} devMsg The development message for the developer, optional
  * @return {Object} The response object
  */
-function serverError(devMsg, msg) {
+function serverError(msg, devMsg) {
   this.status(500);
   this.json({
-    message: msg || "An internal error occur, please try again later.",
-    devMessage: devMsg || "Hum ... ",
+    message: msg || MSG_SERVERERROR,
+    devMessage: devMsg || "",
     success: false,
     code: 500
   });
@@ -137,15 +150,15 @@ function serverError(devMsg, msg) {
 
 /**
  * return not found (404)
- * @param {String} devMsg The development message for the developer, optional
  * @param {String} msg The message for the user, optional
+ * @param {String} devMsg The development message for the developer, optional
  * @return {Object} The response object
  */
-function notFound(devMsg, msg) {
+function notFound(msg, devMsg) {
   this.status(404);
   this.json({
-    message: msg || "The resource is not available.",
-    devMessage: devMsg || "Resource not found",
+    message: msg || MSG_NOTFOUND,
+    devMessage: devMsg || DEVMSG_NOTFOUND,
     success: false,
     code: 404
   });
@@ -164,15 +177,15 @@ function custom(code, object) {
 
 /**
  * return unprocessable (422)
- * @param {String} devMsg The development message for the developer, optional
  * @param {String} msg The message for the user, optional
+ * @param {String} devMsg The development message for the developer, optional
  * @return {Object} The response object
  */
-function unprocessable(devMsg, msg) {
+function unprocessable(msg, devMsg) {
   this.status(422);
   this.json({
-    message: msg || "The resource is not compliant with the API.",
-    devMessage: devMsg || "Resource unprocessable",
+    message: msg || MSG_UNPROCESSABLE,
+    devMessage: devMsg || DEVMSG_UNPROCESSABLE,
     success: false,
     code: 422
   });
@@ -180,26 +193,22 @@ function unprocessable(devMsg, msg) {
 
 /**
  * return unauthorized (401)
- * @param {String} devMsg The development message for the developer, optional
  * @param {String} msg The message for the user, optional
+ * @param {String} devMsg The development message for the developer, optiona
  * @return {Object} The response object
  */
-function unauthorized(devMsg, msg) {
+function unauthorized(msg, devMsg) {
   this.status(401);
   this.json({
-    message:
-      msg ||
-      "You are not authorized to access this resource, please ask an administrator to get the proper rights.",
-    devMessage:
-      devMsg ||
-      "the user is logged in but he doesn't have the permission to do an action",
+    message: msg || MSG_UNAUTHORIZED,
+    devMessage: devMsg || DEVMSG_UNAUTHORIZED,
     success: false,
     code: 401
   });
 }
 
 /**
- * map the custom responses with express
+ * Assign the custom responses to express
  * @param {Function} express The express variable, Mandatory
  * @return {VoidFunction} return nothing.
  */
